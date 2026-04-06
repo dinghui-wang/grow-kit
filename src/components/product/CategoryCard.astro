@@ -1,0 +1,64 @@
+---
+export interface Props {
+  category: {
+    name: string;
+    nameZh: string;
+    description: string;
+    subcategories: Record<string, {
+      name: string;
+      nameZh: string;
+      slug: string;
+      description: string;
+    }>;
+  };
+  categoryKey: string;
+}
+
+const { category, categoryKey } = Astro.props;
+const subcategories = Object.values(category.subcategories);
+const href = `/products/${categoryKey === 'cultivation' ? 'cultivation' : 'packaging'}`;
+---
+
+<div class="card-hover overflow-hidden">
+  <div class="aspect-video bg-gradient-to-br from-primary-100 to-cannabis-light dark:from-primary-900 dark:to-gray-800 flex items-center justify-center">
+    <svg class="w-20 h-20 text-primary-600 dark:text-primary-400 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+      {categoryKey === 'cultivation' ? (
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      ) : (
+        <path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4l16-.02V7z"/>
+      )}
+    </svg>
+  </div>
+  
+  <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+      {category.name}
+    </h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-4">
+      {category.description}
+    </p>
+    
+    <div class="space-y-2 mb-4">
+      {subcategories.slice(0, 4).map(sub => (
+        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+          <svg class="w-4 h-4 mr-2 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          {sub.name}
+        </div>
+      ))}
+      {subcategories.length > 4 && (
+        <div class="text-sm text-gray-500 dark:text-gray-400">
+          +{subcategories.length - 4} more categories
+        </div>
+      )}
+    </div>
+    
+    <a
+      href={href}
+      class="btn-outline w-full text-center"
+    >
+      Explore {categoryKey === 'cultivation' ? 'Cultivation' : 'Packaging'}
+    </a>
+  </div>
+</div>

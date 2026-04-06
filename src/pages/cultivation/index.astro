@@ -1,0 +1,74 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/product/ProductCard.astro';
+import categoriesData from '../../data/categories.json';
+
+const cultivation = categoriesData.categories.cultivation;
+const subcategories = Object.entries(cultivation.subcategories);
+---
+
+<Layout 
+  title="Cannabis Plant Cultivation Equipment"
+  description="Professional cannabis cultivation equipment including lighting, ventilation, nutrients, and more"
+>
+  <div class="container-custom py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+        <li><a href="/" class="hover:text-primary-600">Home</a></li>
+        <li>/</li>
+        <li class="text-gray-900 dark:text-white font-medium">Cultivation</li>
+      </ol>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        {cultivation.name}
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+        {cultivation.description}
+      </p>
+    </div>
+
+    <!-- Subcategories Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      {subcategories.map(([key, subcategory]) => (
+        <a
+          href={`/cultivation/${subcategory.slug}`}
+          class="card-hover group p-6"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+            {subcategory.name}
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+            {subcategory.description}
+          </p>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-primary-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+        Need Bulk Orders?
+      </h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Get wholesale pricing for large quantity orders
+      </p>
+      <a href="/contact" class="btn-primary">
+        Request Wholesale Pricing
+      </a>
+    </div>
+  </div>
+</Layout>

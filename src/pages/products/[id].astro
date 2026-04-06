@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  // 临时示例数据，后续会从数据文件读取
+  const products = [
+    {
+      id: 'led-grow-light-1000w',
+      name: 'LED Grow Light 1000W',
+      category: 'cultivation',
+      subcategory: 'lighting',
+      description: 'Full spectrum LED grow light with adjustable intensity and spectrum control. Perfect for all growth stages from seedling to flowering. Energy-efficient design with long lifespan.',
+      features: [
+        'Full spectrum coverage (380nm-780nm)',
+        'Adjustable power output (200W-1000W)',
+        'Quiet operation with advanced cooling',
+        'Energy efficient - saves up to 50% compared to HPS',
+        'Long lifespan: 50,000+ hours',
+        'IP65 water-resistant rating',
+      ],
+      specifications: {
+        'Power': '1000W (adjustable)',
+        'Coverage Area': '4x4 ft to 5x5 ft',
+        'Spectrum': 'Full Spectrum (380nm-780nm)',
+        'Voltage': 'AC 100-240V',
+        'Dimensions': '24" x 24" x 3"',
+        'Weight': '18 lbs',
+      },
+      images: [
+        '/images/placeholder-product.jpg',
+        '/images/placeholder-product-2.jpg',
+      ],
+    },
+    {
+      id: 'carbon-filter-4inch',
+      name: 'Carbon Filter 4 inch',
+      category: 'cultivation',
+      subcategory: 'ventilation',
+      description: 'High-quality activated carbon filter for effective odor control. Designed for 4-inch ventilation systems.',
+      features: [
+        'Premium virgin activated carbon',
+        'Removes 99% of odors',
+        'Reversible flange design',
+        'Long service life: 1.5-2 years',
+        'Low air resistance',
+        'Pre-filter included',
+      ],
+      specifications: {
+        'Diameter': '4 inches',
+        'Carbon Bed Depth': '2 inches',
+        'Air Flow': '200 CFM',
+        'Carbon Weight': '7 lbs',
+        'Dimensions': '14" x 4"',
+        'Weight': '8 lbs',
+      },
+      images: [
+        '/images/placeholder-product.jpg',
+      ],
+    },
+  ];
+
+  return products.map(product => ({
+    params: { id: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout 
+  title={product.name}
+  description={product.description}
+>
+  <div class="container-custom py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8">
+      <ol class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+        <li><a href="/" class="hover:text-primary-600">Home</a></li>
+        <li>/</li>
+        <li><a href="/products" class="hover:text-primary-600">Products</a></li>
+        <li>/</li>
+        <li><a href={`/products/${product.category}`} class="hover:text-primary-600 capitalize">{product.category}</a></li>
+        <li>/</li>
+        <li class="text-gray-900 dark:text-white font-medium">{product.name}</li>
+      </ol>
+    </nav>
+
+    <!-- Product Detail -->
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Product Images -->
+      <div class="space-y-4">
+        <div class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
+          <img
+            src={product.images[0]}
+            alt={product.name}
+            class="w-full h-full object-cover"
+          />
+        </div>
+        {product.images.length > 1 && (
+          <div class="grid grid-cols-4 gap-4">
+            {product.images.map((image, index) => (
+              <button class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden border-2 border-transparent hover:border-primary-500 transition-colors">
+                <img src={image} alt={`${product.name} ${index + 1}`} class="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Product Info -->
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          {product.name}
+        </h1>
+        
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          {product.description}
+        </p>
+
+        <!-- Features -->
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Key Features
+          </h2>
+          <ul class="space-y-2">
+            {product.features.map(feature => (
+              <li class="flex items-start text-gray-600 dark:text-gray-300">
+                <svg class="w-5 h-5 text-primary-600 dark:text-primary-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Specifications -->
+        <div class="mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            Specifications
+          </h2>
+          <dl class="grid grid-cols-2 gap-4">
+            {Object.entries(product.specifications).map(([key, value]) => (
+              <div class="border-b border-gray-200 dark:border-gray-700 pb-3">
+                <dt class="text-sm text-gray-600 dark:text-gray-400">{key}</dt>
+                <dd class="font-medium text-gray-900 dark:text-white">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Inquiry CTA -->
+        <div class="bg-primary-50 dark:bg-gray-800 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            Interested in this product?
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+            Contact us for wholesale pricing, bulk orders, or custom requirements
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/contact" class="btn-primary flex-1 text-center">
+              Request Quote
+            </a>
+            <a href="mailto:info@grow-kit.com" class="btn-outline flex-1 text-center">
+              Email Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Products Section -->
+    <div class="mt-16">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+        Related Products
+      </h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <!-- Placeholder for related products -->
+        <div class="card p-4">
+          <div class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+        </div>
+        <div class="card p-4">
+          <div class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+        </div>
+        <div class="card p-4">
+          <div class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+        </div>
+        <div class="card p-4">
+          <div class="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg mb-3"></div>
+          <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+          <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

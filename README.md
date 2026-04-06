@@ -1,46 +1,114 @@
-# Astro Starter Kit: Basics
+# Grow-Kit 🌱
 
-```sh
-pnpm create astro@latest -- --template basics
+Professional cannabis cultivation equipment and packaging solutions for B2B clients.
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js >= 22.12.0
+- pnpm (recommended)
+
+### Installation
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📁 Project Structure
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+grow-kit/
+├── src/
+│   ├── components/
+│   │   ├── common/          # Header, Footer, ThemeToggle
+│   │   └── product/         # ProductCard, CategoryCard
+│   ├── data/
+│   │   └── categories.json  # Product categories data
+│   ├── layouts/
+│   │   ├── BaseLayout.astro # Base HTML layout
+│   │   └── Layout.astro     # Main layout with Header/Footer
+│   ├── pages/
+│   │   ├── index.astro      # Homepage
+│   │   ├── products/        # Product pages
+│   │   │   ├── index.astro
+│   │   │   ├── cultivation/
+│   │   │   ├── packaging/
+│   │   │   └── [id].astro   # Product detail page
+│   │   └── contact.astro    # Contact page
+│   └── styles/
+│       └── global.css       # Global styles + Tailwind
+├── astro.config.mjs         # Astro configuration
+├── tailwind.config.mjs      # Tailwind configuration
+└── tsconfig.json            # TypeScript configuration
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🎨 Features
 
-## 🧞 Commands
+- ✅ **Responsive Design** (Desktop-first)
+- ✅ **Dark Mode** support
+- ✅ **B2B Inquiry System**
+- ✅ **Product Categories**
+  - Cannabis Plant Cultivation
+    - Lighting & Control
+    - Ventilation, Environment Control & Climate
+    - Growing Media & Containers
+    - Nutrients & Water Management
+    - Propagation & Breeding
+    - Plant Support & Training
+    - Post-Harvest Processing
+  - Cannabis Product Packaging
+    - Packaging Containers
+    - Labels & Branding
+    - Accessory Packaging
+- ✅ **SEO Optimized**
+- ✅ **Modern Design** (Minimalist)
 
-All commands are run from the root of the project, from a terminal:
+## 🛠️ Tech Stack
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- **Framework**: [Astro](https://astro.build/) v6
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: astro-icon (Material Design Icons)
+- **Content**: MDX support
+- **SEO**: @astrojs/sitemap
 
-## 👀 Want to learn more?
+## 📝 Development
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Adding Products
+
+1. Create product data in `src/data/products/[category]/`
+2. Add product images to `public/images/products/`
+3. Update product routes in `src/pages/products/`
+
+### Customizing Styles
+
+Global styles are in `src/styles/global.css` using Tailwind CSS utilities.
+
+### Theme Configuration
+
+Edit `tailwind.config.mjs` to customize colors, fonts, and animations.
+
+## 🌐 Deployment
+
+Build the project and deploy the `dist/` folder:
+
+```bash
+pnpm build
+```
+
+## 📧 Contact
+
+For inquiries: info@grow-kit.com
+
+---
+
+**Note**: This is a B2B platform focused on wholesale inquiries. No shopping cart functionality.
