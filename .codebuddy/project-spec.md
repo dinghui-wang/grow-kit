@@ -5,28 +5,28 @@
 | 项目 | 描述 |
 |------|------|
 | **项目名称** | Grow-Kit |
-| **项目类型** | 大麻种植设备与包装产品电商展示平台 |
+| **项目类型** | 专业植物生长灯 B2B 批发平台 |
 | **商业模式** | B2B 询盘型（企业级批发业务） |
-| **目标市场** | 英文市场（特定行业用户） |
-| **产品规模** | 10-50 个产品 |
-| **设计风格** | 极简现代 |
+| **目标市场** | 全球市场（英文为主） |
+| **初期产品** | 植物生长灯（LED、HPS、CMH 等全品类） |
+| **设计风格** | 极简现代、专业商务 |
 
 ---
 
 ## 🎯 核心目标
 
-打造一个专业、简洁、高效的大麻种植设备与包装产品 B2B 展示与询盘平台，为企业客户提供优质的产品浏览和询价服务。
+初期专注于植物生长灯领域，打造专业的 B2B 批发平台，为企业客户提供高质量的植物照明解决方案。系统架构设计需考虑后期扩展性，便于引入更多品类（如通风设备、种植容器、营养液等）。
 
 ---
 
 ## 🎨 设计需求
 
 ### 视觉风格
-- **风格定位**：极简现代
+- **风格定位**：极简现代、专业商务
 - **核心元素**：
-  - 大量留白，突出产品
+  - 大量留白，突出产品专业性
   - 清晰的视觉层次
-  - 自然、生态的配色方案
+  - 绿色生态 + 专业科技的配色方案
   - 高质量产品图片展示
 
 ### 交互体验
@@ -42,80 +42,67 @@
 ### 核心功能模块
 
 #### 1. 产品展示系统
-- [ ] 产品列表页（网格/列表切换）
-- [ ] 产品详情页
-- [ ] 产品分类筛选
+- [x] 产品列表页（网格展示）
+- [x] 产品详情页
+- [x] 产品分类筛选
 - [ ] 产品搜索功能
 - [ ] 产品图片轮播
 - [ ] 相关产品推荐
 
-##### 产品分类体系
+##### 产品分类体系（初期）
 
-**一、大麻植物种植（Cannabis Plant Cultivation）**
-- **光照与控制（Lighting & Control）**
-  - 生长灯（Grow Lights）
-  - 灯光控制器（Light Controllers）
+**植物生长灯（Grow Lights）**
+- **LED 生长灯（LED Grow Lights）**
+  - 全光谱 LED 灯（Full Spectrum LED）
+  - 大功率 LED 灯（High Power LED）
+  - LED 灯条（LED Strip Lights）
+  - LED 灯板（LED Panel Lights）
+
+- **HPS/MH 生长灯（High Pressure Sodium / Metal Halide）**
+  - HPS 灯泡（HPS Bulbs）
+  - MH 灯泡（MH Bulbs）
+  - HPS/MH 套装（HPS/MH Kits）
+
+- **CMH/LEC 生长灯（Ceramic Metal Halide）**
+  - CMH 灯泡（CMH Bulbs）
+  - CMH 套装（CMH Kits）
+
+- **荧光生长灯（Fluorescent Grow Lights）**
+  - T5 生长灯（T5 Grow Lights）
+  - T8 生长灯（T8 Grow Lights）
+  - CFL 生长灯（CFL Grow Lights）
+
+- **生长灯配件（Grow Light Accessories）**
+  - 灯具控制器（Light Controllers）
   - 定时器（Timers）
-  - 反光材料（Reflective Materials）
+  - 悬挂套件（Hanging Kits）
+  - 反光罩（Reflectors）
 
-- **通风、环境控制与气候（Ventilation, Environment Control & Climate）**
-  - 排风扇（Exhaust Fans）
-  - 碳滤器（Carbon Filters）
-  - 管道与配件（Ducting & Accessories）
-  - 气候控制器（Climate Controllers）
-  - 温湿度计（Thermo-Hygrometers）
+##### 未来扩展品类（预留架构）
 
-- **栽培介质与容器（Growing Media & Containers）**
-  - 种植盆（Grow Pots）
-  - 种植袋（Grow Bags）
-  - 培养土（Soil & Soilless Mix）
-  - 水培系统（Hydroponic Systems）
+**通风与环境控制（Ventilation & Climate Control）**
+- 待后期扩展
 
-- **营养与水质管理（Nutrients & Water Management）**
-  - 营养液（Nutrients）
-  - 添加剂（Additives）
-  - pH 测试与调节（pH Testing & Adjustment）
-  - 灌溉系统（Irrigation Systems）
-  - 水泵与过滤器（Water Pumps & Filters）
+**种植容器与介质（Growing Media & Containers）**
+- 待后期扩展
 
-- **育苗与繁殖（Propagation & Breeding）**
-  - 育苗盘（Propagation Trays）
-  - 克隆设备（Cloning Equipment）
-  - 种子发芽用品（Seed Germination Supplies）
-  - 繁殖帐篷（Propagation Tents）
+**营养与水质管理（Nutrients & Water Management）**
+- 待后期扩展
 
-- **植株支撑与训练（Plant Support & Training）**
-  - 植物支架（Plant Stakes）
-  - 剪枝工具（Pruning Tools）
-  - 训练夹与绑带（Training Clips & Ties）
-  - 整枝网（Trellis Netting）
+**育苗与繁殖（Propagation & Breeding）**
+- 待后期扩展
 
-- **植株后期处理（Post-Harvest Processing）**
-  - 干燥架（Drying Racks）
-  - 修剪剪刀（Trimming Scissors）
-  - 修剪机（Trimming Machines）
-  - 固化罐（Curing Jars）
-  - 存储容器（Storage Containers）
+**植物支撑与训练（Plant Support & Training）**
+- 待后期扩展
 
-**二、大麻成品包装（Cannabis Product Packaging）**
-- **包装容器（Packaging Containers）**
-  - 玻璃罐（Glass Jars）
-  - 塑料容器（Plastic Containers）
-  - 密封袋（Sealable Bags）
-  - 儿童安全包装（Child-Resistant Packaging）
+**后期处理设备（Post-Harvest Processing）**
+- 待后期扩展
 
-- **标签与标识（Labels & Branding）**
-  - 产品标签（Product Labels）
-  - 定制贴纸（Custom Stickers）
-  - 品牌包装（Branded Packaging）
-
-- **辅助配件（Accessory Packaging）**
-  - 烟具包装（Smoke Accessories Packaging）
-  - 零食包装（Edibles Packaging）
-  - 浓缩物容器（Concentrates Containers）
+**包装解决方案（Packaging Solutions）**
+- 待后期扩展
 
 #### 2. 询盘系统
-- [ ] 产品询价表单
+- [x] 产品询价表单
 - [ ] 批量询价功能
 - [ ] 询价单管理
 - [ ] 邮件通知系统
@@ -127,8 +114,8 @@
 - [ ] 文章列表与详情
 - [ ] 内容分类
 
-#### 3. 用户交互
-- [ ] 联系表单
+#### 4. 用户交互
+- [x] 联系表单
 - [ ] 消息通知
 
 ### 技术需求
@@ -146,133 +133,212 @@
 
 ---
 
-## 🛠️ 技术栈建议
+## 🛠️ 技术栈
 
 ### 前端框架
-- **Astro** (已配置) - 静态站点生成
-- **React/Vue** - 交互组件（按需引入）
+- **Astro 6** - 静态站点生成
+- **React** - 交互组件（按需引入）
 
 ### UI/样式
 - **Tailwind CSS** - 原子化 CSS
-- 或 **Nuxt UI / DaisyUI** - UI 组件库
 
 ### 功能扩展
-- **astro-i18n** - 国际化
+- **astro-i18n** - 国际化（预留）
 - **@astrojs/sitemap** - SEO 站点地图
-- **astro-icon** - 图标系统
 
 ### 数据管理
-- **Markdown/MDX** - 内容管理（博客）
-- **JSON/YAML** - 产品数据
-- 或集成 Headless CMS（如 Sanity、Contentful）
+- **JSON** - 产品数据（可扩展结构）
+- **TypeScript** - 类型定义
 
 ### 询盘功能
-- **Formspree / Formspark** - 表单处理
-- **EmailJS** - 邮件发送
-- 或集成 CRM 系统（如 HubSpot、Salesforce）
+- **Formspree / Formspark** - 表单处理（待集成）
+
+---
+
+## 📊 数据结构设计（可扩展）
+
+### 产品分类结构（categories.json）
+
+```json
+{
+  "categories": {
+    "grow-lights": {
+      "id": "grow-lights",
+      "name": "Grow Lights",
+      "slug": "grow-lights",
+      "description": "Professional grow lighting solutions",
+      "status": "active",
+      "icon": "light",
+      "subcategories": {
+        "led-grow-lights": {
+          "id": "led-grow-lights",
+          "name": "LED Grow Lights",
+          "slug": "led",
+          "description": "Energy-efficient LED lighting solutions"
+        },
+        "hps-mh-lights": {
+          "id": "hps-mh-lights",
+          "name": "HPS/MH Grow Lights",
+          "slug": "hps-mh",
+          "description": "Traditional high-intensity discharge lights"
+        }
+      }
+    },
+    "ventilation": {
+      "id": "ventilation",
+      "name": "Ventilation & Climate Control",
+      "slug": "ventilation",
+      "status": "coming-soon",
+      "icon": "fan",
+      "description": "Coming soon"
+    }
+  }
+}
+```
+
+### 产品数据结构（products/*.json）
+
+```json
+{
+  "id": "led-1000w-full-spectrum",
+  "name": "LED Grow Light 1000W Full Spectrum",
+  "slug": "led-grow-light-1000w",
+  "category": "grow-lights",
+  "subcategory": "led-grow-lights",
+  "status": "active",
+  "images": {
+    "main": "/images/products/led-1000w-main.jpg",
+    "gallery": []
+  },
+  "specifications": {
+    "wattage": "1000W",
+    "spectrum": "Full Spectrum",
+    "coverage": "4x4 ft",
+    "voltage": "AC 100-240V"
+  },
+  "features": [],
+  "description": "Professional-grade LED grow light...",
+  "isFeatured": true,
+  "metaTitle": "",
+  "metaDescription": ""
+}
+```
 
 ---
 
 ## 📅 开发优先级
 
-### 阶段一：基础框架（Week 1）
-1. 项目架构搭建
-2. 全局样式系统（暗色模式）
-3. 响应式布局组件
-4. 基础页面结构
+### 阶段一：重构核心（当前）
+1. ✅ 简化产品分类，聚焦植物生长灯
+2. ✅ 重构数据结构，确保可扩展性
+3. ✅ 更新导航和路由结构
+4. ✅ 优化首页内容
 
-### 阶段二：核心功能（Week 2-3）
-1. 产品展示系统
-2. 分类与搜索
-3. 产品详情页
+### 阶段二：产品完善
+1. [ ] 完善产品详情页
+2. [ ] 添加产品规格展示
+3. [ ] 实现产品搜索功能
+4. [ ] 添加产品对比功能
 
-### 阶段三：交互功能（Week 3-4）
-1. 询盘表单集成
-2. 联系表单
-3. 博客系统
+### 阶段三：询盘优化
+1. [ ] 集成询盘表单服务
+2. [ ] 优化询盘流程
+3. [ ] 添加批量询价功能
 
-### 阶段四：优化上线
-1. SEO 优化
-2. 性能优化
-3. 多语言支持
-4. 测试与部署
+### 阶段四：内容与扩展
+1. [ ] 博客系统
+2. [ ] 产品知识库
+3. [ ] 准备引入新品类
 
 ---
 
-## 📂 建议目录结构
+## 📂 目录结构
 
 ```
 grow-kit/
 ├── src/
 │   ├── components/
-│   │   ├── common/          # 通用组件
-│   │   ├── product/         # 产品相关组件
+│   │   ├── common/              # 通用组件
+│   │   │   ├── Header.astro
+│   │   │   ├── Footer.astro
+│   │   │   └── ThemeToggle.astro
+│   │   ├── product/             # 产品相关组件
 │   │   │   ├── ProductCard.astro
 │   │   │   ├── ProductGrid.astro
 │   │   │   ├── ProductFilter.astro
 │   │   │   └── CategoryNav.astro
-│   │   ├── blog/            # 博客组件
-│   │   └── ui/              # UI 基础组件
+│   │   └── ui/                  # UI 基础组件
 │   ├── layouts/
-│   │   ├── Layout.astro     # 主布局
+│   │   ├── Layout.astro         # 主布局
 │   │   └── ProductLayout.astro
 │   ├── pages/
-│   │   ├── index.astro                # 首页
-│   │   ├── products/
-│   │   │   ├── index.astro            # 产品总览
-│   │   │   ├── cultivation/           # 大麻植物种植
+│   │   ├── index.astro          # 首页
+│   │   ├── products/            # 产品页面
+│   │   │   ├── index.astro      # 产品总览
+│   │   │   ├── grow-lights/     # 植物生长灯
 │   │   │   │   ├── index.astro
-│   │   │   │   ├── lighting/          # 光照与控制
-│   │   │   │   ├── ventilation/       # 通风与环境控制
-│   │   │   │   ├── growing-media/     # 栽培介质与容器
-│   │   │   │   ├── nutrients/         # 营养与水质管理
-│   │   │   │   ├── propagation/       # 育苗与繁殖
-│   │   │   │   ├── plant-support/     # 植株支撑与训练
-│   │   │   │   └── post-harvest/      # 植株后期处理
-│   │   │   ├── packaging/             # 大麻成品包装
-│   │   │   │   ├── index.astro
-│   │   │   │   ├── containers/        # 包装容器
-│   │   │   │   ├── labels/            # 标签与标识
-│   │   │   │   └── accessories/       # 辅助配件
-│   │   │   └── [slug].astro           # 产品详情页
-│   │   ├── blog/                      # 博客页
-│   │   │   ├── index.astro
-│   │   │   └── [slug].astro
-│   │   └── contact.astro              # 联系页
+│   │   │   │   ├── led/         # LED 生长灯
+│   │   │   │   ├── hps-mh/      # HPS/MH 生长灯
+│   │   │   │   ├── cmh/         # CMH 生长灯
+│   │   │   │   ├── fluorescent/ # 荧光生长灯
+│   │   │   │   └── accessories/ # 配件
+│   │   │   └── [slug].astro     # 产品详情页
+│   │   ├── contact.astro        # 联系页
+│   │   ├── custom.astro         # 定制服务
+│   │   └── faq.astro            # 常见问题
 │   ├── data/
-│   │   ├── products/                  # 产品数据（按分类）
-│   │   │   ├── cultivation/
-│   │   │   │   ├── lighting.json
-│   │   │   │   ├── ventilation.json
-│   │   │   │   ├── growing-media.json
-│   │   │   │   ├── nutrients.json
-│   │   │   │   ├── propagation.json
-│   │   │   │   ├── plant-support.json
-│   │   │   │   └── post-harvest.json
-│   │   │   └── packaging/
-│   │   │       ├── containers.json
-│   │   │       ├── labels.json
+│   │   ├── products/            # 产品数据
+│   │   │   └── grow-lights/     # 生长灯产品
+│   │   │       ├── led.json
+│   │   │       ├── hps-mh.json
+│   │   │       ├── cmh.json
+│   │   │       ├── fluorescent.json
 │   │   │       └── accessories.json
-│   │   └── categories.json            # 分类元数据
+│   │   └── categories.json      # 分类元数据
+│   ├── assets/                  # 静态资源
 │   ├── styles/
 │   │   └── global.css
 │   └── utils/
 │       └── helpers.ts
 └── public/
     └── images/
-        ├── products/                  # 产品图片（按分类）
-        └── blog/                      # 博客图片
+        └── products/            # 产品图片
 ```
+
+---
+
+## 🔄 后期扩展策略
+
+### 引入新品类的步骤
+
+1. **更新分类数据**
+   - 在 `categories.json` 中添加新分类
+   - 将 `status` 从 `"coming-soon"` 改为 `"active"`
+
+2. **创建产品数据**
+   - 在 `src/data/products/` 下创建新分类文件夹
+   - 添加产品 JSON 文件
+
+3. **创建页面路由**
+   - 在 `src/pages/products/` 下创建对应路由
+
+4. **更新导航**
+   - Header 组件会自动读取 `categories.json`
+   - 显示新增分类（状态为 active）
+
+5. **无需修改其他代码**
+   - 系统架构支持自动扩展
 
 ---
 
 ## 📝 备注
 
-- **开发策略**：使用模板主题快速上线，后续迭代优化
-- **时间规划**：无明确时间表，按阶段推进
-- **设计资源**：需要从零设计（可参考行业优秀案例）
+- **开发策略**：聚焦单一品类，快速上线，后期迭代扩展
+- **时间规划**：按阶段推进
+- **设计资源**：极简现代风格，专业商务定位
 
 ---
 
 *文档创建时间：2026-04-05*
-*最后更新：2026-04-05*
+*最后更新：2026-04-07*
+*版本：2.0 - 重构版（聚焦植物生长灯）*

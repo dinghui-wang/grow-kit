@@ -1,0 +1,89 @@
+[
+  {
+    "id": "led-1000w-full-spectrum",
+    "name": "LED Grow Light 1000W Full Spectrum",
+    "slug": "led-grow-light-1000w",
+    "category": "grow-lights",
+    "subcategory": "led",
+    "status": "active",
+    "images": {
+      "main": "/images/products/led-1000w-main.jpg",
+      "gallery": []
+    },
+    "specifications": {
+      "wattage": "1000W",
+      "spectrum": "Full Spectrum",
+      "coverage": "4x4 ft",
+      "voltage": "AC 100-240V",
+      "lifespan": "50,000 hours"
+    },
+    "features": [
+      "Full spectrum for all growth stages",
+      "Energy efficient design",
+      "Daisy chain connection",
+      "Quiet operation"
+    ],
+    "description": "Professional-grade 1000W LED grow light with full spectrum coverage, ideal for commercial cultivation operations.",
+    "isFeatured": true,
+    "metaTitle": "LED Grow Light 1000W Full Spectrum | Grow-Kit",
+    "metaDescription": "Professional 1000W LED grow light with full spectrum coverage for commercial cultivation."
+  },
+  {
+    "id": "led-600w-panel",
+    "name": "LED Grow Light 600W Panel",
+    "slug": "led-grow-light-600w-panel",
+    "category": "grow-lights",
+    "subcategory": "led",
+    "status": "active",
+    "images": {
+      "main": "/images/products/led-600w-panel.jpg",
+      "gallery": []
+    },
+    "specifications": {
+      "wattage": "600W",
+      "spectrum": "Full Spectrum",
+      "coverage": "3x3 ft",
+      "voltage": "AC 100-240V",
+      "lifespan": "50,000 hours"
+    },
+    "features": [
+      "Compact panel design",
+      "Low heat output",
+      "Full spectrum",
+      "Easy installation"
+    ],
+    "description": "Compact 600W LED panel light suitable for small to medium grow spaces.",
+    "isFeatured": false,
+    "metaTitle": "LED Grow Light 600W Panel | Grow-Kit",
+    "metaDescription": "Compact 600W LED panel grow light for small to medium grow spaces."
+  },
+  {
+    "id": "led-2000w-commercial",
+    "name": "LED Grow Light 2000W Commercial Grade",
+    "slug": "led-grow-light-2000w-commercial",
+    "category": "grow-lights",
+    "subcategory": "led",
+    "status": "active",
+    "images": {
+      "main": "/images/products/led-2000w-commercial.jpg",
+      "gallery": []
+    },
+    "specifications": {
+      "wattage": "2000W",
+      "spectrum": "Full Spectrum + UV/IR",
+      "coverage": "6x6 ft",
+      "voltage": "AC 100-277V",
+      "lifespan": "60,000 hours"
+    },
+    "features": [
+      "Commercial-grade build",
+      "UV/IR spectrum enhancement",
+      "Daisy chain capability",
+      "Dimmable control"
+    ],
+    "description": "Heavy-duty 2000W LED grow light designed for large-scale commercial operations with advanced spectrum control.",
+    "isFeatured": true,
+    "metaTitle": "LED Grow Light 2000W Commercial Grade | Grow-Kit",
+    "metaDescription": "Heavy-duty 2000W commercial LED grow light with advanced spectrum control."
+  }
+]

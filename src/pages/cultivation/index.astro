@@ -1,7 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import ProductCard from '../../components/product/ProductCard.astro';
-import categoriesData from '../../data/categories.json';
+import categoriesData from '@data/categories.json';
 
 const cultivation = categoriesData.categories.cultivation;
 const subcategories = Object.entries(cultivation.subcategories);

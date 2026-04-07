@@ -1,7 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ProductCard from '../../components/product/ProductCard.astro';
-import categoriesData from '../../data/categories.json';
+import Layout from '@layouts/Layout.astro';
+import ProductCard from '@components/product/ProductCard.astro';
+import categoriesData from '@data/categories.json';
 
 export function getStaticPaths() {
   const cultivation = categoriesData.categories.cultivation;

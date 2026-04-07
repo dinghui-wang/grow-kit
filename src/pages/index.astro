@@ -1,65 +1,27 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ProductCard from "../components/product/ProductCard.astro";
-import HomeHero from "../assets/homehero.jpg";
-import Cultivation from "../assets/cultivation.jpg";
-import Packaging from "../assets/packaging.jpg";
-import Led from "../assets/led.jpg";
-import Tent from "../assets/tent.jpg";
-import Fan from "../assets/fan.jpg";
-import Filter from "../assets/filter.jpg";
-import categoriesData from "../data/categories.json";
+import Layout from "@layouts/Layout.astro";
+import ProductCard from "@components/product/ProductCard.astro";
+import HomeHero from "@assets/homehero.jpg";
+import Led from "@assets/led.jpg";
+import Factory from "@assets/factory.jpg";
+import categoriesData from "@data/categories.json";
+import ledProducts from "@data/products/grow-lights/led.json";
 
-const cultivation = categoriesData.categories.cultivation;
-const packaging = categoriesData.categories.packaging;
-// 临时产品数据（后续会从数据文件读取）
-const featuredProducts = [
-  {
-    id: "1",
-    name: "LED Grow Light 1000W",
-    category: "cultivation",
-    subcategory: "lighting",
-    price: null,
-    image: Led.src,
-    description: "Full spectrum LED grow light for optimal plant growth",
-    isFeatured: true,
-  },
-  {
-    id: "2",
-    name: "Grow Tent 4x4",
-    category: "cultivation",
-    subcategory: "growing-media",
-    price: null,
-    image: Tent.src,
-    description: "Professional grow tent with reflective Mylar lining, durable steel frame, and multiple ventilation ports",
-    isFeatured: true,
-  },
-  {
-    id: "3",
-    name: "Inline Fan 6 inch",
-    category: "cultivation",
-    subcategory: "ventilation",
-    price: null,
-    image: Fan.src,
-    description: "High-performance inline fan with quiet operation, ideal for ventilation and air circulation systems",
-    isFeatured: true,
-  },
-  {
-    id: "4",
-    name: "Carbon Filter 6 inch",
-    category: "cultivation",
-    subcategory: "ventilation",
-    price: null,
-    image: Filter.src,
-    description: "Premium activated carbon filter for effective odor control and air purification in grow rooms",
-    isFeatured: true,
-  },
-];
+const growLightsCategory = categoriesData.categories["grow-lights"];
+
+// Featured products (LED grow lights)
+const featuredProducts = ledProducts
+  .filter((p) => p.isFeatured)
+  .slice(0, 4)
+  .map((p) => ({
+    ...p,
+    image: Led.src, // Use placeholder for now
+  }));
 ---
 
 <Layout
-  title="Professional Cannabis Cultivation & Packaging Solutions"
-  description="Grow-Kit offers premium cannabis cultivation equipment and packaging solutions for B2B clients worldwide."
+  title="Professional Grow Lights for Indoor Cultivation | Grow-Kit"
+  description="Grow-Kit offers premium LED, HPS, and CMH grow lights for commercial cannabis cultivation. Factory direct wholesale pricing with worldwide shipping."
 >
   <!-- Hero Section -->
   <section
@@ -84,18 +46,17 @@ const featuredProducts = [
           <h1
             class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg"
           >
-            Professional <span class="text-primary-400"
-              >Cannabis Cultivation</span
-            >
-            & Packaging Solutions
+            Professional <span class="text-primary-400">Grow Lights</span>
+            for Indoor Cultivation
           </h1>
           <p class="text-lg md:text-xl text-gray-200 mb-8 drop-shadow-md">
-            Premium equipment and packaging for B2B clients worldwide. Quality
-            products, competitive pricing, exceptional service.
+            Premium LED, HPS, and CMH grow lights for commercial cannabis
+            cultivation. Factory direct wholesale pricing with OEM
+            customization.
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
-            <a href="/cultivation" class="btn-primary">
-              Browse Cultivation
+            <a href="/products/grow-lights" class="btn-primary">
+              Browse Grow Lights
               <svg
                 class="w-5 h-5 ml-2"
                 fill="none"
@@ -254,121 +215,427 @@ const featuredProducts = [
     </div>
   </section>
 
-  <!-- Categories Section -->
+  <!-- Social Proof Section -->
+  <section class="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+    <div class="container-custom">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+        >
+          Trusted by Growers Worldwide
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Over 500 wholesale clients across 50+ countries rely on Grow-Kit for
+          their commercial cultivation needs
+        </p>
+      </div>
+
+      <!-- Stats Counter -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="text-center">
+          <div
+            class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+          >
+            10+
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 font-medium">
+            Years Experience
+          </div>
+        </div>
+        <div class="text-center">
+          <div
+            class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+          >
+            500+
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 font-medium">
+            Wholesale Clients
+          </div>
+        </div>
+        <div class="text-center">
+          <div
+            class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+          >
+            50+
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 font-medium">
+            Countries Served
+          </div>
+        </div>
+        <div class="text-center">
+          <div
+            class="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+          >
+            98%
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-300 font-medium">
+            Satisfaction Rate
+          </div>
+        </div>
+      </div>
+
+      <!-- Certification Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-6 mb-16">
+        <div
+          class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <svg
+            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+          <span class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >ETL Certified</span
+          >
+        </div>
+        <div
+          class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <svg
+            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+          <span class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >UL Listed</span
+          >
+        </div>
+        <div
+          class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <svg
+            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+          <span class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >FCC Approved</span
+          >
+        </div>
+        <div
+          class="flex items-center gap-2 px-5 py-3 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700"
+        >
+          <svg
+            class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+          <span class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+            >ISO 9001</span
+          >
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-shadow"
+        >
+          <div class="flex items-center gap-1 mb-4">
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+          </div>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6"
+          >
+            "Grow-Kit's LED grow lights transformed our yield. We've been
+            working with them for 3 years and the quality consistency is
+            outstanding. Their OEM service helped us build our own brand."
+          </p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-400 to-cannabis flex items-center justify-center text-white font-bold text-sm"
+            >
+              JM
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                James Mitchell
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400">
+                CEO, GreenLeaf Supply Co. — USA
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-shadow"
+        >
+          <div class="flex items-center gap-1 mb-4">
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+          </div>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6"
+          >
+            "We ordered 200 units of the 1000W LED bars for our greenhouse.
+            Excellent packaging, fast shipping, and their after-sales support
+            team is very responsive. Highly recommend for EU wholesale buyers."
+          </p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm"
+            >
+              SK
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                Stefan Kowalski
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400">
+                Procurement Manager, AgroLight EU — Netherlands
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div
+          class="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-shadow"
+        >
+          <div class="flex items-center gap-1 mb-4">
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+            <svg
+              class="w-5 h-5 text-yellow-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              ><path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path></svg
+            >
+          </div>
+          <p
+            class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6"
+          >
+            "The custom branding options are great. Grow-Kit printed our logo on
+            every light and package. Our customers love the professional look.
+            Will continue to expand our cooperation."
+          </p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white font-bold text-sm"
+            >
+              LR
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-gray-900 dark:text-white">
+                Lucas Rodriguez
+              </div>
+              <div class="text-xs text-gray-500 dark:text-gray-400">
+                Founder, GrowMax Distribution — Canada
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Categories Section -->
   <section class="py-16 md:py-24 bg-white dark:bg-gray-950">
     <div class="container-custom">
       <div class="text-center mb-12">
         <h2
           class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
         >
-          Product Categories
+          Grow Light Categories
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Explore our comprehensive range of cultivation equipment and packaging
-          solutions
+          {growLightsCategory.description}
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Cultivation Card -->
-        <a href="/cultivation" class="card-hover group overflow-hidden">
-          <div
-            class="aspect-video bg-gradient-to-br from-primary-100 to-cannabis-light dark:from-primary-900 dark:to-gray-800 flex items-center justify-center"
-            style=`background-image: url('${Cultivation.src}'); background-size: cover;`
-          >
-            <svg
-              class="w-20 h-20 text-primary-600 dark:text-primary-400 opacity-50"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          Object.values(growLightsCategory.subcategories).map((sub) => (
+            <a
+              href={`/products/${growLightsCategory.slug}/${sub.slug}`}
+              class="card-hover group overflow-hidden bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-all"
             >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-              ></path>
-            </svg>
-          </div>
-          <div class="p-6">
-            <h3
-              class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
-            >
-              {cultivation.name}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              {cultivation.description}
-            </p>
-            <div
-              class="flex items-center text-primary-600 dark:text-primary-400 font-medium"
-            >
-              <span
-                >Explore {Object.keys(cultivation.subcategories).length} categories</span
-              >
-              <svg
-                class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- Packaging Card -->
-        <a href="/packaging" class="card-hover group overflow-hidden">
-          <div
-            class="aspect-video bg-gradient-to-br from-cannabis-light to-primary-100 dark:from-gray-800 dark:to-primary-900 flex items-center justify-center overflow-hidden relative"
-          >
-            <!-- Rotated Background Image -->
-            <div
-              class="absolute inset-0 bg-center bg-no-repeat"
-              style={`background-image: url('${Packaging.src}'); background-size: cover;`}
-            >
-            </div>
-            <!-- Fallback Icon -->
-            <svg
-              class="w-20 h-20 text-primary-600 dark:text-primary-400 opacity-50 relative z-10"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4l16-.02V7z"
-              ></path>
-            </svg>
-          </div>
-          <div class="p-6">
-            <h3
-              class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
-            >
-              {packaging.name}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-4">
-              {packaging.description}
-            </p>
-            <div
-              class="flex items-center text-primary-600 dark:text-primary-400 font-medium"
-            >
-              <span
-                >Explore {Object.keys(packaging.subcategories).length} categories</span
-              >
-              <svg
-                class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path>
-              </svg>
-            </div>
-          </div>
-        </a>
+              <div class="aspect-video bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center">
+                <svg
+                  class="w-16 h-16 text-primary-600 dark:text-primary-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
+                </svg>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {sub.name}
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  {sub.description}
+                </p>
+                <div class="flex items-center text-primary-600 dark:text-primary-400 font-medium text-sm">
+                  <span>Learn More</span>
+                  <svg
+                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -393,12 +660,24 @@ const featuredProducts = [
       </div>
 
       <div class="text-center mt-12">
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/cultivation" class="btn-outline"
-            >View Cultivation Products</a
+        <a
+          href="/products/grow-lights"
+          class="btn-primary inline-flex items-center"
+        >
+          View All Grow Lights
+          <svg
+            class="w-5 h-5 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-          <a href="/packaging" class="btn-outline">View Packaging Products</a>
-        </div>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
@@ -406,207 +685,335 @@ const featuredProducts = [
   <!-- Why Choose Us Section -->
   <section class="py-16 md:py-24 bg-white dark:bg-gray-950">
     <div class="container-custom">
-      <div class="text-center mb-12">
+      <div class="text-center mb-16">
         <h2
           class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
         >
           Why Partner With Us?
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Dedicated to supporting your wholesale business with reliable products
-          and services
+          Three reasons wholesale buyers trust Grow-Kit for their commercial
+          cultivation needs
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Factory Direct Supply -->
+      <!-- Row 1: Image Left, Text Right -->
+      <div
+        class="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20 md:mb-28"
+      >
         <div
-          class="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow"
+          class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
+          style=`background-image: url(${Factory.src}); background-size: cover;`
         >
-          <div
-            class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
-          >
-            <!-- Image placeholder: Factory Workshop -->
-            <div class="text-center">
-              <svg
-                class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                ></path>
-              </svg>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                Factory Workshop Image
-              </p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Factory Direct Supply
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Direct from our factory with no middlemen. We support large volume
-              orders with competitive wholesale pricing.
+          <div class="text-center">
+            <svg
+              class="w-20 h-20 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Factory Workshop Image
             </p>
           </div>
         </div>
-
-        <!-- US Market Standards -->
-        <div
-          class="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow"
-        >
+        <div>
           <div
-            class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 mb-5"
           >
-            <!-- Image placeholder: Quality Control / Testing -->
-            <div class="text-center">
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+          </div>
+          <h3
+            class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Factory Direct Supply
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Direct from our own manufacturing facility with no middlemen. We
+            support large volume orders with competitive wholesale pricing and
+            consistent quality across every batch.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
               <svg
-                class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-              >
-                <path
+                ><path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                ></path>
-              </svg>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                Testing Lab Image
-              </p>
-            </div>
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >No middlemen — pass savings directly to you</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >Consistent quality with strict production standards</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >MOQ flexibility for businesses of all sizes</span
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Row 2: Text Left, Image Right -->
+      <div
+        class="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20 md:mb-28"
+      >
+        <div class="order-2 md:order-1">
+          <div
+            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 mb-5"
+          >
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              US Market Standards
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              All electrical and safety standards compliant for the US market.
-              ETL, UL, and FCC certifications available.
+          <h3
+            class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Certified Quality Standards
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Every product meets rigorous US market electrical and safety
+            standards. Our in-house QC team inspects each batch before shipment
+            to guarantee reliability.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >ETL, UL & FCC certified for US compliance</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >100% inspection before shipment</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >ISO 9001 certified manufacturing process</span
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center order-1 md:order-2"
+        >
+          <div class="text-center">
+            <svg
+              class="w-20 h-20 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              Testing Lab Image
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- OEM/ODM Customization -->
+      <!-- Row 3: Image Left, Text Right -->
+      <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
         <div
-          class="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow"
+          class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
         >
-          <div
-            class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
-          >
-            <!-- Image placeholder: Customization / Printing -->
-            <div class="text-center">
-              <svg
-                class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                ></path>
-              </svg>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                Custom Logo Image
-              </p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              OEM/ODM & Printing
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Full customization support including OEM, ODM, and custom logo
-              printing to build your brand.
+          <div class="text-center">
+            <svg
+              class="w-20 h-20 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              ></path>
+            </svg>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              OEM Customization Image
             </p>
           </div>
         </div>
-
-        <!-- Shipping Solutions -->
-        <div
-          class="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow lg:col-start-1 lg:col-end-2"
-        >
+        <div>
           <div
-            class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/30 mb-5"
           >
-            <!-- Image placeholder: Warehouse / Shipping -->
-            <div class="text-center">
+            <svg
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              ></path>
+            </svg>
+          </div>
+          <h3
+            class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Full OEM Customization
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            Build your own brand with our complete OEM/ODM service. From custom
+            logo printing to bespoke product design, we help you stand out in
+            the market.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
               <svg
-                class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-              >
-                <path
+                ><path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                ></path>
-              </svg>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                Warehouse Image
-              </p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Flexible Shipping Solutions
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Support for both FCL (Full Container Load) and LCL (Less than
-              Container Load) shipments to meet your needs.
-            </p>
-          </div>
-        </div>
-
-        <!-- Technical Support -->
-        <div
-          class="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow lg:col-start-2 lg:col-end-4"
-        >
-          <div
-            class="aspect-video bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center"
-          >
-            <!-- Image placeholder: Technical Team / Consultation -->
-            <div class="text-center">
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >Custom logo & branding on products and packaging</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
               <svg
-                class="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-2"
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-              >
-                <path
+                ><path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                ></path>
-              </svg>
-              <p class="text-sm text-gray-500 dark:text-gray-500">
-                Technical Team Image
-              </p>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              Professional Technical Support
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Expert cultivation solution consulting. We help you configure the
-              right equipment setup for your growing operations.
-            </p>
-          </div>
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >Dedicated design team for ODM projects</span
+              >
+            </li>
+            <li class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary-500 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path></svg
+              >
+              <span class="text-gray-600 dark:text-gray-300"
+                >Sample available before bulk production</span
+              >
+            </li>
+          </ul>
         </div>
       </div>
     </div>

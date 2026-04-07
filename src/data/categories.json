@@ -1,78 +1,71 @@
 {
   "categories": {
-    "cultivation": {
-      "name": "Cannabis Plant Cultivation",
-      "nameZh": "大麻植物种植",
-      "description": "Professional equipment for cannabis cultivation",
+    "grow-lights": {
+      "id": "grow-lights",
+      "name": "Grow Lights",
+      "slug": "grow-lights",
+      "description": "Professional grow lighting solutions for indoor cultivation",
+      "status": "active",
+      "icon": "light",
       "subcategories": {
-        "lighting": {
-          "name": "Lighting & Control",
-          "nameZh": "光照与控制",
-          "slug": "lighting",
-          "description": "Grow lights, controllers, and reflective materials"
+        "led": {
+          "id": "led",
+          "name": "LED Grow Lights",
+          "slug": "led",
+          "description": "Energy-efficient full spectrum LED lighting solutions"
         },
-        "ventilation": {
-          "name": "Ventilation, Environment Control & Climate",
-          "nameZh": "通风、环境控制与气候",
-          "slug": "ventilation",
-          "description": "Fans, filters, and climate control systems"
+        "hps-mh": {
+          "id": "hps-mh",
+          "name": "HPS/MH Grow Lights",
+          "slug": "hps-mh",
+          "description": "Traditional high-intensity discharge lighting systems"
         },
-        "growing-media": {
-          "name": "Growing Media & Containers",
-          "nameZh": "栽培介质与容器",
-          "slug": "growing-media",
-          "description": "Pots, soil, and hydroponic systems"
+        "cmh": {
+          "id": "cmh",
+          "name": "CMH/LEC Grow Lights",
+          "slug": "cmh",
+          "description": "Ceramic metal halide lighting technology"
         },
-        "nutrients": {
-          "name": "Nutrients & Water Management",
-          "nameZh": "营养与水质管理",
-          "slug": "nutrients",
-          "description": "Nutrients, additives, and irrigation systems"
+        "fluorescent": {
+          "id": "fluorescent",
+          "name": "Fluorescent Grow Lights",
+          "slug": "fluorescent",
+          "description": "T5, T8 and CFL lighting for propagation and seedlings"
         },
-        "propagation": {
-          "name": "Propagation & Breeding",
-          "nameZh": "育苗与繁殖",
-          "slug": "propagation",
-          "description": "Cloning equipment and germination supplies"
-        },
-        "plant-support": {
-          "name": "Plant Support & Training",
-          "nameZh": "植株支撑与训练",
-          "slug": "plant-support",
-          "description": "Stakes, ties, and training tools"
-        },
-        "post-harvest": {
-          "name": "Post-Harvest Processing",
-          "nameZh": "植株后期处理",
-          "slug": "post-harvest",
-          "description": "Drying racks, trimming tools, and storage"
+        "accessories": {
+          "id": "accessories",
+          "name": "Lighting Accessories",
+          "slug": "accessories",
+          "description": "Controllers, timers, hangers and reflectors"
         }
       }
     },
-    "packaging": {
-      "name": "Cannabis Product Packaging",
-      "nameZh": "大麻成品包装",
-      "description": "Professional packaging solutions for cannabis products",
-      "subcategories": {
-        "containers": {
-          "name": "Packaging Containers",
-          "nameZh": "包装容器",
-          "slug": "containers",
-          "description": "Jars, bags, and child-resistant packaging"
-        },
-        "labels": {
-          "name": "Labels & Branding",
-          "nameZh": "标签与标识",
-          "slug": "labels",
-          "description": "Custom labels and branded packaging"
-        },
-        "accessories": {
-          "name": "Accessory Packaging",
-          "nameZh": "辅助配件",
-          "slug": "accessories",
-          "description": "Packaging for accessories and edibles"
-        }
-      }
+    "ventilation": {
+      "id": "ventilation",
+      "name": "Ventilation & Climate",
+      "slug": "ventilation",
+      "description": "Coming soon - Ventilation and climate control solutions",
+      "status": "coming-soon",
+      "icon": "fan",
+      "subcategories": {}
+    },
+    "growing-media": {
+      "id": "growing-media",
+      "name": "Growing Media & Containers",
+      "slug": "growing-media",
+      "description": "Coming soon - Pots, soil and hydroponic systems",
+      "status": "coming-soon",
+      "icon": "container",
+      "subcategories": {}
+    },
+    "nutrients": {
+      "id": "nutrients",
+      "name": "Nutrients & Water",
+      "slug": "nutrients",
+      "description": "Coming soon - Nutrients and irrigation systems",
+      "status": "coming-soon",
+      "icon": "drop",
+      "subcategories": {}
     }
   }
 }

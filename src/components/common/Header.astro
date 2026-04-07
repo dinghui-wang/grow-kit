@@ -1,14 +1,15 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import categoriesData from '../../data/categories.json';
+import categoriesData from '@data/categories.json';
 
-const cultivation = categoriesData.categories.cultivation;
-const packaging = categoriesData.categories.packaging;
+// Get active categories only
+const activeCategories = Object.values(categoriesData.categories).filter(
+  cat => cat.status === 'active'
+);
 
 const topLinks = [
   { href: '/contact', label: 'Contact' },
   { href: '/faq', label: 'FAQs' },
-  { href: '#', label: 'EN', isLanguage: true },
 ];
 
 const socialLinks = [
@@ -23,19 +24,14 @@ const socialLinks = [
   <div class="bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
     <div class="container-custom">
       <div class="flex items-center justify-between h-10">
-        <!-- Left: Contact, FAQs & Language -->
+        <!-- Left: Contact & FAQs -->
         <div class="flex items-center space-x-6">
           {topLinks.map(link => (
             <a
               href={link.href}
-              class="flex items-center space-x-1 text-xs text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              class="text-xs text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
-              <span>{link.label}</span>
-              {link.isLanguage && (
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                </svg>
-              )}
+              {link.label}
             </a>
           ))}
         </div>
@@ -80,7 +76,7 @@ const socialLinks = [
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 group">
         <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
         </svg>
         <span class="text-xl font-bold text-gradient">Grow-Kit</span>
       </a>
@@ -91,131 +87,73 @@ const socialLinks = [
           Home
         </a>
 
-        <!-- Cultivation Mega Menu -->
-        <div class="relative group">
-          <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium">
-            <span>Cultivation</span>
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
+        <!-- Dynamic Category Menus -->
+        {activeCategories.map(category => (
+          <div class="relative group">
+            <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium">
+              <span>{category.name}</span>
+              {Object.keys(category.subcategories).length > 0 && (
+                <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              )}
+            </button>
 
-          <!-- Mega Menu Panel -->
-          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 w-[700px]">
-              <!-- Header -->
-              <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
-                <div>
-                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">Cultivation Equipment</h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Professional equipment for cannabis cultivation</p>
-                </div>
-                <a href="/cultivation" class="flex items-center space-x-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors">
-                  <span>View All</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-              </div>
-
-              <!-- Categories Grid -->
-              <div class="grid grid-cols-2 gap-3">
-                {Object.values(cultivation.subcategories).map(sub => (
-                  <a
-                    href={`/cultivation/${sub.slug}`}
-                    class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group/item"
-                  >
-                    <!-- Icon -->
-                    <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center group-hover/item:bg-primary-200 dark:group-hover/item:bg-primary-800/50 transition-colors">
-                      <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        {sub.slug === 'lighting' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>}
-                        {sub.slug === 'ventilation' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>}
-                        {sub.slug === 'growing-media' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>}
-                        {sub.slug === 'nutrients' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>}
-                        {sub.slug === 'propagation' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>}
-                        {sub.slug === 'plant-support' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>}
-                        {sub.slug === 'post-harvest' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>}
-                      </svg>
-                    </div>
-                    <!-- Content -->
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm font-semibold text-gray-900 dark:text-white group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">
-                        {sub.name}
+            {Object.keys(category.subcategories).length > 0 && (
+              <div class="fixed top-[116px] left-0 right-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto z-50">
+                <div class="flex justify-center">
+                  <div class="bg-white dark:bg-gray-900 shadow-2xl border-t border-l border-r border-gray-200 dark:border-gray-700 overflow-hidden" style="width: 1280px; max-width: 100%;">
+                    <div class="py-8 px-8">
+                      <!-- Header -->
+                      <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">{category.name}</h3>
+                          <p class="text-base text-gray-500 dark:text-gray-400 mt-2">{category.description}</p>
+                        </div>
+                        <a href={`/products/${category.slug}`} class="flex items-center space-x-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-base font-medium transition-colors shadow-lg hover:shadow-xl">
+                          <span>View All Products</span>
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                          </svg>
+                        </a>
                       </div>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 line-clamp-1">
-                        {sub.description}
-                      </p>
-                    </div>
-                    <!-- Arrow -->
-                    <svg class="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 group-hover/item:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Packaging Mega Menu -->
-        <div class="relative group">
-          <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium">
-            <span>Packaging</span>
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-
-          <!-- Mega Menu Panel -->
-          <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 w-[500px]">
-              <!-- Header -->
-              <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-200 dark:border-gray-700">
-                <div>
-                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">Packaging Solutions</h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Professional packaging for cannabis products</p>
-                </div>
-                <a href="/packaging" class="flex items-center space-x-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors">
-                  <span>View All</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                  </svg>
-                </a>
-              </div>
-
-              <!-- Categories Grid -->
-              <div class="space-y-2">
-                {Object.values(packaging.subcategories).map(sub => (
-                  <a
-                    href={`/packaging/${sub.slug}`}
-                    class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group/item"
-                  >
-                    <!-- Icon -->
-                    <div class="flex-shrink-0 w-10 h-10 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center group-hover/item:bg-primary-200 dark:group-hover/item:bg-primary-800/50 transition-colors">
-                      <svg class="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        {sub.slug === 'containers' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>}
-                        {sub.slug === 'labels' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>}
-                        {sub.slug === 'accessories' && <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>}
-                      </svg>
-                    </div>
-                    <!-- Content -->
-                    <div class="flex-1 min-w-0">
-                      <div class="text-sm font-semibold text-gray-900 dark:text-white group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors">
-                        {sub.name}
+                      <!-- Subcategories Grid -->
+                      <div class="grid grid-cols-3 gap-6">
+                        {Object.values(category.subcategories).map(sub => (
+                          <a
+                            href={`/products/${category.slug}/${sub.slug}`}
+                            class="flex items-start space-x-4 p-5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all group/item border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-lg"
+                          >
+                            <!-- Icon -->
+                            <div class="flex-shrink-0 w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-xl flex items-center justify-center group-hover/item:bg-primary-200 dark:group-hover/item:bg-primary-800/50 transition-colors shadow-sm">
+                              <svg class="w-7 h-7 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                              </svg>
+                            </div>
+                            <!-- Content -->
+                            <div class="flex-1 min-w-0">
+                              <div class="text-base font-semibold text-gray-900 dark:text-white group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors mb-1">
+                                {sub.name}
+                              </div>
+                              <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                                {sub.description}
+                              </p>
+                            </div>
+                            <!-- Arrow -->
+                            <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 group-hover/item:translate-x-1 transition-all mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                          </a>
+                        ))}
                       </div>
-                      <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 line-clamp-1">
-                        {sub.description}
-                      </p>
                     </div>
-                    <!-- Arrow -->
-                    <svg class="w-4 h-4 text-gray-400 dark:text-gray-500 group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 group-hover/item:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                  </a>
-                ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
-        </div>
+        ))}
 
         <a href="/custom" class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors font-medium">
           Custom
@@ -246,29 +184,21 @@ const socialLinks = [
         Home
       </a>
 
-      <div class="px-4 py-2">
-        <div class="font-medium text-gray-900 dark:text-white mb-2">Cultivation</div>
-        <div class="ml-4 space-y-1">
-          <a href="/cultivation" class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">All Products</a>
-          {Object.values(cultivation.subcategories).map(sub => (
-            <a href={`/cultivation/${sub.slug}`} class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">
-              {sub.name}
-            </a>
-          ))}
+      {activeCategories.map(category => (
+        <div class="px-4 py-2">
+          <div class="font-medium text-gray-900 dark:text-white mb-2">{category.name}</div>
+          {Object.keys(category.subcategories).length > 0 && (
+            <div class="ml-4 space-y-1">
+              <a href={`/products/${category.slug}`} class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">All Products</a>
+              {Object.values(category.subcategories).map(sub => (
+                <a href={`/products/${category.slug}/${sub.slug}`} class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">
+                  {sub.name}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
-      </div>
-
-      <div class="px-4 py-2">
-        <div class="font-medium text-gray-900 dark:text-white mb-2">Packaging</div>
-        <div class="ml-4 space-y-1">
-          <a href="/packaging" class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">All Products</a>
-          {Object.values(packaging.subcategories).map(sub => (
-            <a href={`/packaging/${sub.slug}`} class="block py-1 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600">
-              {sub.name}
-            </a>
-          ))}
-        </div>
-      </div>
+      ))}
 
       <a href="/custom" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors font-medium">
         Custom

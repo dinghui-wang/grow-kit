@@ -1,0 +1,23 @@
+// @ts-nocheck
+import tailwind from '@astrojs/tailwind';
+import path from 'node:path';
+
+// https://astro.build/config
+export default {
+  site: 'https://grow-kit.com',
+  integrations: [
+    tailwind(),
+  ],
+  vite: {
+    resolve: {
+      alias: {
+        '@layouts': path.resolve('src/layouts'),
+        '@components': path.resolve('src/components'),
+        '@data': path.resolve('src/data'),
+        '@styles': path.resolve('src/styles'),
+        '@utils': path.resolve('src/utils'),
+        '@assets': path.resolve('src/assets'),
+      }
+    }
+  }
+};
