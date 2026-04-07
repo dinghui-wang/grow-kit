@@ -3,24 +3,25 @@ import Layout from "@layouts/Layout.astro";
 import ProductCard from "@components/product/ProductCard.astro";
 import categoriesData from "@data/categories.json";
 
-const growLightsCategory = categoriesData.categories['grow-lights'];
-
 export async function getStaticPaths() {
+  const growLightsCategory = categoriesData.categories['grow-lights'];
   const paths = Object.keys(growLightsCategory.subcategories).map(slug => ({
     params: { slug },
   }));
   return paths;
 }
 
+const growLightsCategory = categoriesData.categories['grow-lights'];
+
 const { slug } = Astro.params;
-const subcategory = growLightsCategory.subcategories[slug];
+const subcategory = growLightsCategory.subcategories[slug as keyof typeof growLightsCategory.subcategories];
 
 if (!subcategory) {
   return Astro.redirect('/products/grow-lights');
 }
 
 // Load products for this subcategory
-let products = [];
+let products: any[] = [];
 try {
   const productData = await import(`../../data/products/grow-lights/${slug}.json`);
   products = productData.default || [];
