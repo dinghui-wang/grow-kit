@@ -8,6 +8,8 @@ export default {
   integrations: [
     tailwind(),
   ],
+  // 必须是 static（默认就是这个，删掉多余配置）
+  output: "static",
   vite: {
     resolve: {
       alias: {
