@@ -4,7 +4,7 @@ import ProductCard from '@components/product/ProductCard.astro';
 import categoriesData from '@data/categories.json';
 
 export function getStaticPaths() {
-  const cultivation = categoriesData.categories.cultivation;
+  const cultivation = categoriesData.categories['grow-lights'];
   
   return Object.entries(cultivation.subcategories).map(([key, subcategory]) => ({
     params: { slug: subcategory.slug },
@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const { subcategory, subcategoryKey } = Astro.props;
+const { subcategory } = Astro.props;
 
 // 临时示例产品数据
 const sampleProducts = [
