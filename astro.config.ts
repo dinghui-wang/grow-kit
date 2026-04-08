@@ -3,12 +3,17 @@ import tailwind from "@astrojs/tailwind";
 import path from "node:path";
 
 
+import cloudflare from "@astrojs/cloudflare";
+
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://grow-kit.com",
   integrations: [tailwind()],
+
   // 必须是 static（默认就是这个，删掉多余配置）
   output: "static",
+
   vite: {
     resolve: {
       alias: {
@@ -21,4 +26,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare()
 });
