@@ -1,35 +1,38 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "types": ["astro/client"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@data/*": [
-        "src/data/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ]
-    }
-  },
-  "include": [
-    ".astro/**/*",
-    "src/**/*",
-    "astro.config.ts"
-  ]
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"types": [
+			"astro/client"
+		],
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+			"@components/*": [
+				"src/components/*"
+			],
+			"@layouts/*": [
+				"src/layouts/*"
+			],
+			"@data/*": [
+				"src/data/*"
+			],
+			"@styles/*": [
+				"src/styles/*"
+			],
+			"@assets/*": [
+				"src/assets/*"
+			],
+			"@utils/*": [
+				"src/utils/*"
+			]
+		}
+	},
+	"include": [
+		".astro/**/*",
+		"src/**/*",
+		"astro.config.ts",
+		"./worker-configuration.d.ts"
+	]
 }
