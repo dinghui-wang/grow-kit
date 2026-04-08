@@ -1,15 +1,17 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ProductCard from '@components/product/ProductCard.astro';
-import categoriesData from '@data/categories.json';
+import Layout from "@layouts/Layout.astro";
+import ProductCard from "@components/product/ProductCard.astro";
+import categoriesData from "@data/categories.json";
 
 export function getStaticPaths() {
-  const cultivation = categoriesData.categories['grow-lights'];
-  
-  return Object.entries(cultivation.subcategories).map(([key, subcategory]) => ({
-    params: { slug: subcategory.slug },
-    props: { subcategory, subcategoryKey: key },
-  }));
+  const cultivation = categoriesData.categories["grow-lights"];
+
+  return Object.entries(cultivation.subcategories).map(
+    ([key, subcategory]) => ({
+      params: { slug: subcategory.slug },
+      props: { subcategory, subcategoryKey: key },
+    })
+  );
 }
 
 const { slug } = Astro.params;
@@ -18,59 +20,64 @@ const { subcategory } = Astro.props;
 // 临时示例产品数据
 const sampleProducts = [
   {
-    id: 'sample-1',
-    name: 'Sample Product 1',
-    description: 'High-quality product for your cultivation needs',
-    image: '/images/placeholder-product.jpg',
-    category: 'cultivation',
+    id: "sample-1",
+    name: "Sample Product 1",
+    description: "High-quality product for your cultivation needs",
+    image: "/images/placeholder-product.jpg",
+    category: "cultivation",
     subcategory: slug,
   },
   {
-    id: 'sample-2',
-    name: 'Sample Product 2',
-    description: 'Professional grade equipment',
-    image: '/images/placeholder-product.jpg',
-    category: 'cultivation',
+    id: "sample-2",
+    name: "Sample Product 2",
+    description: "Professional grade equipment",
+    image: "/images/placeholder-product.jpg",
+    category: "cultivation",
     subcategory: slug,
   },
   {
-    id: 'sample-3',
-    name: 'Sample Product 3',
-    description: 'Top rated by growers worldwide',
-    image: '/images/placeholder-product.jpg',
-    category: 'cultivation',
+    id: "sample-3",
+    name: "Sample Product 3",
+    description: "Top rated by growers worldwide",
+    image: "/images/placeholder-product.jpg",
+    category: "cultivation",
     subcategory: slug,
   },
   {
-    id: 'sample-4',
-    name: 'Sample Product 4',
-    description: 'Best value for money',
-    image: '/images/placeholder-product.jpg',
-    category: 'cultivation',
+    id: "sample-4",
+    name: "Sample Product 4",
+    description: "Best value for money",
+    image: "/images/placeholder-product.jpg",
+    category: "cultivation",
     subcategory: slug,
   },
 ];
 ---
 
-<Layout 
-  title={subcategory.name}
-  description={subcategory.description}
->
+<Layout title={subcategory.name} description={subcategory.description}>
   <div class="container-custom py-12">
     <!-- Breadcrumb -->
     <nav class="mb-8">
-      <ol class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+      <ol
+        class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400"
+      >
         <li><a href="/" class="hover:text-primary-600">Home</a></li>
         <li>/</li>
-        <li><a href="/cultivation" class="hover:text-primary-600">Cultivation</a></li>
+        <li>
+          <a href="/cultivation" class="hover:text-primary-600">Cultivation</a>
+        </li>
         <li>/</li>
-        <li class="text-gray-900 dark:text-white font-medium">{subcategory.name}</li>
+        <li class="text-gray-900 dark:text-white font-medium">
+          {subcategory.name}
+        </li>
       </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+      >
         {subcategory.name}
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
@@ -80,9 +87,7 @@ const sampleProducts = [
 
     <!-- Products Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-      {sampleProducts.map(product => (
-        <ProductCard product={product} />
-      ))}
+      {sampleProducts.map((product) => <ProductCard product={product} />)}
     </div>
 
     <!-- CTA Section -->
@@ -93,9 +98,7 @@ const sampleProducts = [
       <p class="text-gray-600 dark:text-gray-300 mb-4">
         We offer custom manufacturing and bulk pricing for B2B clients
       </p>
-      <a href="/contact" class="btn-primary">
-        Request Quote
-      </a>
+      <a href="/contact" class="btn-primary"> Request Quote </a>
     </div>
   </div>
 </Layout>

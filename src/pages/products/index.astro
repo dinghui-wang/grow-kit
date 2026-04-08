@@ -4,7 +4,7 @@ import categoriesData from "@data/categories.json";
 
 // Get active categories
 const activeCategories = Object.values(categoriesData.categories).filter(
-  cat => cat.status === 'active'
+  (cat) => cat.status === "active"
 );
 ---
 
@@ -13,14 +13,19 @@ const activeCategories = Object.values(categoriesData.categories).filter(
   description="Browse our range of professional grow lights for indoor cultivation. LED, HPS, CMH and more available at wholesale prices."
 >
   <!-- Hero -->
-  <section class="bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-900 dark:to-gray-950 py-16">
+  <section
+    class="bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-900 dark:to-gray-950 py-16"
+  >
     <div class="container-custom">
       <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+        >
           Our Products
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-300">
-          Professional grow lights for indoor cultivation. Factory direct wholesale pricing with worldwide shipping.
+          Professional grow lights for indoor cultivation. Factory direct
+          wholesale pricing with worldwide shipping.
         </p>
       </div>
     </div>
@@ -30,48 +35,58 @@ const activeCategories = Object.values(categoriesData.categories).filter(
   <section class="py-16">
     <div class="container-custom">
       <div class="grid md:grid-cols-2 gap-8">
-        {activeCategories.map(category => (
-          <a
-            href={`/products/${category.slug}`}
-            class="card-hover group overflow-hidden bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-all"
-          >
-            <div class="aspect-video bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center">
-              <svg
-                class="w-20 h-20 text-primary-600 dark:text-primary-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-              </svg>
-            </div>
-            <div class="p-6">
-              <h3
-                class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
-              >
-                {category.name}
-              </h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-4">
-                {category.description}
-              </p>
-              <div class="flex items-center text-primary-600 dark:text-primary-400 font-medium">
-                <span>
-                  {Object.keys(category.subcategories).length > 0
-                    ? `${Object.keys(category.subcategories).length} Categories`
-                    : 'Explore'}
-                </span>
+        {
+          activeCategories.map((category) => (
+            <a
+              href={`/products/${category.slug}`}
+              class="card-hover group overflow-hidden bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-all"
+            >
+              <div class="aspect-video bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/10 flex items-center justify-center">
                 <svg
-                  class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  class="w-20 h-20 text-primary-600 dark:text-primary-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  />
                 </svg>
               </div>
-            </div>
-          </a>
-        ))}
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {category.name}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                  {category.description}
+                </p>
+                <div class="flex items-center text-primary-600 dark:text-primary-400 font-medium">
+                  <span>
+                    {Object.keys(category.subcategories).length > 0
+                      ? `${Object.keys(category.subcategories).length} Categories`
+                      : "Explore"}
+                  </span>
+                  <svg
+                    class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -80,16 +95,28 @@ const activeCategories = Object.values(categoriesData.categories).filter(
   <section class="py-16 bg-gray-50 dark:bg-gray-900">
     <div class="container-custom">
       <div class="text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4"
+        >
           Need Help Choosing?
         </h2>
         <p class="text-gray-600 dark:text-gray-300 mb-8">
-          Our team can help you find the perfect lighting solution for your cultivation needs.
+          Our team can help you find the perfect lighting solution for your
+          cultivation needs.
         </p>
         <a href="/contact" class="btn-primary inline-flex items-center">
           Contact Us
-          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          <svg
+            class="w-5 h-5 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>

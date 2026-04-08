@@ -1,89 +1,113 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import Layout from "@layouts/Layout.astro";
 
 const faqs = [
   {
-    question: 'What is the minimum order quantity (MOQ)?',
-    answer: 'Our minimum order quantities vary by product. For most cultivation equipment, the MOQ is typically 10-50 units depending on the item. For packaging products, MOQs start at 100-500 units. Contact us for specific product MOQs.',
+    question: "What is the minimum order quantity (MOQ)?",
+    answer:
+      "Our minimum order quantities vary by product. For most cultivation equipment, the MOQ is typically 10-50 units depending on the item. For packaging products, MOQs start at 100-500 units. Contact us for specific product MOQs.",
   },
   {
-    question: 'Do you offer custom branding or private label options?',
-    answer: 'Yes! We offer custom branding and private label services for most of our products. This includes custom logos, colors, packaging designs, and more. Minimum quantities apply for custom orders. Visit our Custom page for more information.',
+    question: "Do you offer custom branding or private label options?",
+    answer:
+      "Yes! We offer custom branding and private label services for most of our products. This includes custom logos, colors, packaging designs, and more. Minimum quantities apply for custom orders. Visit our Custom page for more information.",
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We accept bank transfers (T/T), PayPal, and major credit cards. For large orders, we typically require a 30% deposit with the balance due before shipment. Payment terms can be negotiated for established customers.',
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept bank transfers (T/T), PayPal, and major credit cards. For large orders, we typically require a 30% deposit with the balance due before shipment. Payment terms can be negotiated for established customers.",
   },
   {
-    question: 'Do you ship internationally?',
-    answer: 'Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by destination. We work with reliable freight forwarders to ensure your products arrive safely and on time.',
+    question: "Do you ship internationally?",
+    answer:
+      "Yes, we ship to most countries worldwide. Shipping costs and delivery times vary by destination. We work with reliable freight forwarders to ensure your products arrive safely and on time.",
   },
   {
-    question: 'What is your lead time for orders?',
-    answer: 'Lead times vary by product and order size. For in-stock items, we typically ship within 3-7 business days. For custom orders or large quantities, lead times range from 2-8 weeks. We\'ll provide a detailed timeline when you place your order.',
+    question: "What is your lead time for orders?",
+    answer:
+      "Lead times vary by product and order size. For in-stock items, we typically ship within 3-7 business days. For custom orders or large quantities, lead times range from 2-8 weeks. We'll provide a detailed timeline when you place your order.",
   },
   {
-    question: 'Can I get samples before placing a bulk order?',
-    answer: 'Yes, we offer samples for most products. Sample costs are typically credited toward your first bulk order. Contact us to request samples and discuss your needs.',
+    question: "Can I get samples before placing a bulk order?",
+    answer:
+      "Yes, we offer samples for most products. Sample costs are typically credited toward your first bulk order. Contact us to request samples and discuss your needs.",
   },
   {
-    question: 'Do you offer OEM/ODM services?',
-    answer: 'Absolutely! We have extensive experience with OEM and ODM projects. Our team can help you design and manufacture products according to your specifications. Contact us to discuss your requirements.',
+    question: "Do you offer OEM/ODM services?",
+    answer:
+      "Absolutely! We have extensive experience with OEM and ODM projects. Our team can help you design and manufacture products according to your specifications. Contact us to discuss your requirements.",
   },
   {
-    question: 'What certifications do your products have?',
-    answer: 'Our products meet various international standards and certifications depending on the product type and target market. This includes CE, RoHS, UL, and others. Contact us for specific certification information for products you\'re interested in.',
+    question: "What certifications do your products have?",
+    answer:
+      "Our products meet various international standards and certifications depending on the product type and target market. This includes CE, RoHS, UL, and others. Contact us for specific certification information for products you're interested in.",
   },
 ];
 ---
 
-<Layout 
+<Layout
   title="Frequently Asked Questions"
   description="Find answers to common questions about our products, ordering, shipping, and custom services"
 >
   <div class="max-w-4xl mx-auto px-6 sm:px-8 py-12">
     <!-- Page Header -->
     <div class="text-center mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+      >
         Frequently Asked Questions
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300">
-        Can't find the answer you're looking for? <a href="/contact" class="text-primary-600 dark:text-primary-400 hover:underline">Contact us</a>
+        Can't find the answer you're looking for? <a
+          href="/contact"
+          class="text-primary-600 dark:text-primary-400 hover:underline"
+          >Contact us</a
+        >
       </p>
     </div>
 
     <!-- FAQ List -->
     <div class="space-y-4">
-      {faqs.map((faq, index) => (
-        <details class="card group" open={index === 0}>
-          <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-            <h3 class="font-semibold text-gray-900 dark:text-white pr-4">
-              {faq.question}
-            </h3>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-6 pb-6">
-            <p class="text-gray-600 dark:text-gray-300">
-              {faq.answer}
-            </p>
-          </div>
-        </details>
-      ))}
+      {
+        faqs.map((faq, index) => (
+          <details class="card group" open={index === 0}>
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <h3 class="font-semibold text-gray-900 dark:text-white pr-4">
+                {faq.question}
+              </h3>
+              <svg
+                class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-gray-600 dark:text-gray-300">{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
     </div>
 
     <!-- CTA Section -->
-    <div class="mt-12 bg-primary-50 dark:bg-gray-800 rounded-2xl p-8 text-center">
+    <div
+      class="mt-12 bg-primary-50 dark:bg-gray-800 rounded-2xl p-8 text-center"
+    >
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
         Still have questions?
       </h3>
       <p class="text-gray-600 dark:text-gray-300 mb-4">
         Our team is here to help you with any inquiries
       </p>
-      <a href="/contact" class="btn-primary">
-        Contact Us
-      </a>
+      <a href="/contact" class="btn-primary"> Contact Us </a>
     </div>
   </div>
 </Layout>

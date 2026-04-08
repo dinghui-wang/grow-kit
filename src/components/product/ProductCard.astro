@@ -16,12 +16,16 @@ const { product } = Astro.props;
 ---
 
 <article class="card-hover group">
-  <div class="aspect-square bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-    {product.isFeatured && (
-      <div class="absolute top-2 left-2 z-10">
-        <span class="badge-primary">Featured</span>
-      </div>
-    )}
+  <div
+    class="aspect-square bg-gray-100 dark:bg-gray-800 relative overflow-hidden"
+  >
+    {
+      product.isFeatured && (
+        <div class="absolute top-2 left-2 z-10">
+          <span class="badge-primary">Featured</span>
+        </div>
+      )
+    }
     <img
       src={product.image}
       alt={product.name}
@@ -29,24 +33,28 @@ const { product } = Astro.props;
       loading="lazy"
     />
   </div>
-  
+
   <div class="p-4">
-    <h3 class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+    <h3
+      class="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+    >
       {product.name}
     </h3>
     <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
       {product.description}
     </p>
     <div class="flex items-center justify-between">
-      {product.price ? (
-        <span class="font-bold text-gray-900 dark:text-white">
-          ${product.price.toFixed(2)}
-        </span>
-      ) : (
-        <span class="text-sm text-gray-500 dark:text-gray-400">
-          Contact for pricing
-        </span>
-      )}
+      {
+        product.price ? (
+          <span class="font-bold text-gray-900 dark:text-white">
+            ${product.price.toFixed(2)}
+          </span>
+        ) : (
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            Contact for pricing
+          </span>
+        )
+      }
       <a
         href={`/products/${product.id}`}
         class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"

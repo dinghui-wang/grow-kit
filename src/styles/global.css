@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+
   /* 自定义基础样式 */
   html {
     @apply scroll-smooth;
@@ -31,6 +32,7 @@
 }
 
 @layer components {
+
   /* 容器 */
   .container-custom {
     @apply max-w-8xl mx-auto px-5 sm:px-6 lg:px-8;
@@ -82,6 +84,7 @@
 }
 
 @layer utilities {
+
   /* 文本渐变 */
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-cannabis-light;

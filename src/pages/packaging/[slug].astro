@@ -1,11 +1,11 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ProductCard from '@components/product/ProductCard.astro';
-import categoriesData from '@data/categories.json';
+import Layout from "@layouts/Layout.astro";
+import ProductCard from "@components/product/ProductCard.astro";
+import categoriesData from "@data/categories.json";
 
 export function getStaticPaths() {
-  const packaging = categoriesData.categories['grow-lights'];
-  
+  const packaging = categoriesData.categories["grow-lights"];
+
   return Object.entries(packaging.subcategories).map(([key, subcategory]) => ({
     params: { slug: subcategory.slug },
     props: { subcategory, subcategoryKey: key },
@@ -18,59 +18,64 @@ const { subcategory } = Astro.props;
 // 临时示例产品数据
 const sampleProducts = [
   {
-    id: 'sample-1',
-    name: 'Sample Packaging Product 1',
-    description: 'High-quality packaging solution',
-    image: '/images/placeholder-product.jpg',
-    category: 'packaging',
+    id: "sample-1",
+    name: "Sample Packaging Product 1",
+    description: "High-quality packaging solution",
+    image: "/images/placeholder-product.jpg",
+    category: "packaging",
     subcategory: slug,
   },
   {
-    id: 'sample-2',
-    name: 'Sample Packaging Product 2',
-    description: 'Child-resistant and compliant',
-    image: '/images/placeholder-product.jpg',
-    category: 'packaging',
+    id: "sample-2",
+    name: "Sample Packaging Product 2",
+    description: "Child-resistant and compliant",
+    image: "/images/placeholder-product.jpg",
+    category: "packaging",
     subcategory: slug,
   },
   {
-    id: 'sample-3',
-    name: 'Sample Packaging Product 3',
-    description: 'Eco-friendly materials',
-    image: '/images/placeholder-product.jpg',
-    category: 'packaging',
+    id: "sample-3",
+    name: "Sample Packaging Product 3",
+    description: "Eco-friendly materials",
+    image: "/images/placeholder-product.jpg",
+    category: "packaging",
     subcategory: slug,
   },
   {
-    id: 'sample-4',
-    name: 'Sample Packaging Product 4',
-    description: 'Customizable branding options',
-    image: '/images/placeholder-product.jpg',
-    category: 'packaging',
+    id: "sample-4",
+    name: "Sample Packaging Product 4",
+    description: "Customizable branding options",
+    image: "/images/placeholder-product.jpg",
+    category: "packaging",
     subcategory: slug,
   },
 ];
 ---
 
-<Layout 
-  title={subcategory.name}
-  description={subcategory.description}
->
+<Layout title={subcategory.name} description={subcategory.description}>
   <div class="container-custom py-12">
     <!-- Breadcrumb -->
     <nav class="mb-8">
-      <ol class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+      <ol
+        class="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400"
+      >
         <li><a href="/" class="hover:text-primary-600">Home</a></li>
         <li>/</li>
-        <li><a href="/packaging" class="hover:text-primary-600">Packaging</a></li>
+        <li>
+          <a href="/packaging" class="hover:text-primary-600">Packaging</a>
+        </li>
         <li>/</li>
-        <li class="text-gray-900 dark:text-white font-medium">{subcategory.name}</li>
+        <li class="text-gray-900 dark:text-white font-medium">
+          {subcategory.name}
+        </li>
       </ol>
     </nav>
 
     <!-- Page Header -->
     <div class="mb-12">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      <h1
+        class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+      >
         {subcategory.name}
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
@@ -80,9 +85,7 @@ const sampleProducts = [
 
     <!-- Products Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-      {sampleProducts.map(product => (
-        <ProductCard product={product} />
-      ))}
+      {sampleProducts.map((product) => <ProductCard product={product} />)}
     </div>
 
     <!-- CTA Section -->
@@ -93,9 +96,7 @@ const sampleProducts = [
       <p class="text-gray-600 dark:text-gray-300 mb-4">
         We offer custom branded packaging for your products
       </p>
-      <a href="/custom" class="btn-primary">
-        Request Custom Packaging
-      </a>
+      <a href="/custom" class="btn-primary"> Request Custom Packaging </a>
     </div>
   </div>
 </Layout>
